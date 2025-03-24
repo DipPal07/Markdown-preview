@@ -3,16 +3,6 @@ const textInput = document.querySelector("#textInput");
 const content = document.querySelector("#content");
 const copyText = document.querySelector("#copy-text");
 
-input.addEventListener("input", () => {
-  const value = textInput.value;
-  const output = marked.parse(value);
-  content.innerHTML = output;
-  localStorage.setItem("markdownData", value);
-  localStorage.setItem("markdownOutput", output);
-});
-
-content.innerHTML = localStorage.getItem("markdownOutput");
-textInput.value = localStorage.getItem("markdownData");
 function copy() {
   if (!textInput.value) {
     alert("Input box is empty");
@@ -29,3 +19,14 @@ function reset() {
   content.innerHTML = "";
   localStorage.clear();
 }
+
+input.addEventListener("input", () => {
+  const value = textInput.value;
+  const output = marked.parse(value);
+  content.innerHTML = output;
+  localStorage.setItem("markdownData", value);
+  localStorage.setItem("markdownOutput", output);
+});
+
+content.innerHTML = localStorage.getItem("markdownOutput");
+textInput.value = localStorage.getItem("markdownData");
